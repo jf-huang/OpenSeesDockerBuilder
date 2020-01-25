@@ -83,6 +83,10 @@ sed -i 's:OPTF    = -O:OPTF    = -O -I${mainDir}/scotch_6.0.9/include -I${mainDi
 sed -i 's:OPTC    = -O -I.:OPTC    = -O -I. -I${mainDir}/scotch_6.0.9/include:g' Makefile.inc && \
 make alllib && \
 cd .. && rm -r MUMPS_5.2.1.tar.gz metis-5.1.0 parmetis-4.0.3 scotch_6.0.9 && \
+\
+\
+\
+# hdf5 \
 tar -xzf CMake-hdf5-1.10.4.tar.gz && cd CMake-hdf5-1.10.4/ && cd hdf5-1.10.4 && \
 ./configure --prefix=/usr/local/hdf5 --enable-parallel --enable-build-mode=production --disable-shared && \
 make && make install && make check-install && \
@@ -106,24 +110,5 @@ ENV PATH "$PATH:$mainDir/mpiInstall/bin:$mainDir/bin"
 #sed -i 's:HOME		= /home/jfhuang:HOME            = ${mainDir}:g' Makefile.def && \
 #make && \
 #cd .. && rm -r OpenSees MUMPS_5.2.1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
