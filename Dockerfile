@@ -91,15 +91,14 @@ tar -xzf CMake-hdf5-1.10.4.tar.gz && cd CMake-hdf5-1.10.4/ && cd hdf5-1.10.4 && 
 ./configure --prefix=/usr/local/hdf5 --enable-parallel --enable-build-mode=production --disable-shared && \
 make && make install && make check-install && \
 cd ../../ && rm -r CMake-hdf5-1.10.4.tar.gz CMake-hdf5-1.10.4 && \
-#make && make check && make install && make check-install \
-\
-\
-\
-\
+#make && make check && make install && make check-install
+
+
+
 # opensees, install path: $mainDir/bin \
 #RUN git clone https://github.com/jf-huang/OpenSees.git \
 # parallel version \
-git -c http.sslVerify=false clone https://github.com/jf-huang/OpenSees.git && cd OpenSees && \
+RUN git -c http.sslVerify=false clone https://github.com/jf-huang/OpenSees.git && cd OpenSees && \
 rm Makefile.def && cp Makefile_PARALLEL.def Makefile.def && \
 sed -i 's:HOME  = /home/jfhuang:HOME  = ${mainDir}:g' Makefile.def && \
 sed -i 's:MUMPS_DIR = /home/jfhuang/Downloads/MUMPS_5.1.2:MUMPS_DIR = ${mainDir}/MUMPS_5.2.1:g' Makefile.def && \
