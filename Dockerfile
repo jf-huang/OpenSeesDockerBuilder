@@ -92,6 +92,7 @@ tar -xzf CMake-hdf5-1.10.4.tar.gz && cd CMake-hdf5-1.10.4/ && cd hdf5-1.10.4 && 
 make && make install && make check-install && \
 cd ../../ && rm -r CMake-hdf5-1.10.4.tar.gz CMake-hdf5-1.10.4
 
+ENV PATH "$PATH:$mainDir/mpiInstall/bin"
 
 # opensees, install path: $mainDir/bin
 #RUN git clone https://github.com/jf-huang/OpenSees.git
@@ -103,12 +104,10 @@ sed -i 's:MUMPS_DIR = /home/jfhuang/Downloads/MUMPS_5.1.2:MUMPS_DIR = ${mainDir}
 make wipe && make && \
 cd .. && rm -r OpenSees MUMPS_5.2.1
 
-ENV PATH "$PATH:$mainDir/mpiInstall/bin:$mainDir/bin"
+ENV PATH "$PATH:$mainDir/bin"
 
 # sequential version, might need to rebuild sequential version of HDF5 Lib
 #RUN ls /usr/local/hdf5/include && rm -r OpenSees && git clone https://github.com/jf-huang/OpenSees.git && cd OpenSees && rm Makefile.def && cp Makefile_SEQ.def Makefile.def && \
 #sed -i 's:HOME		= /home/jfhuang:HOME            = ${mainDir}:g' Makefile.def && \
 #make && \
 #cd .. && rm -r OpenSees MUMPS_5.2.1
-
-
