@@ -94,6 +94,8 @@ cd ../../ && rm -r CMake-hdf5-1.10.4.tar.gz CMake-hdf5-1.10.4
 
 ENV PATH "$PATH:$mainDir/mpiInstall/bin"
 
+# changing BUILD_TIME will break the cache here so that opensees code can be built each time
+ARG BUILD_TIME=unknown
 # opensees, install path: $mainDir/bin
 #RUN git clone https://github.com/jf-huang/OpenSees.git
 # parallel version
