@@ -113,3 +113,4 @@ ENV PATH "$PATH:$mainDir/bin"
 #sed -i 's:HOME		= /home/jfhuang:HOME            = ${mainDir}:g' Makefile.def && \
 #make && \
 #cd .. && rm -r OpenSees MUMPS_5.2.1
+
