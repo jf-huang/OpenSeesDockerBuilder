@@ -116,4 +116,4 @@ ENV PATH "$PATH:$mainDir/bin"
 
 # Date: 10222020
 # Date: 11142020
-# Date: 02052021: enhancement for OpenSeesSP; add latest mpco; PML compilation enabled
+# Date: 02052021: enhancement for OpenSeesSP; add latest mpco; PML compilation enabled 
