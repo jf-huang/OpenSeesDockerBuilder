@@ -99,11 +99,11 @@ ARG BUILD_TIME=unknown
 # opensees, install path: $mainDir/bin
 #RUN git clone https://github.com/jf-huang/OpenSees.git
 # parallel version
-RUN git -c http.sslVerify=false clone https://github.com/jf-huang/OpenSees.git && cd OpenSees && git checkout uniformdamping && \
-cp Makefile_PARALLEL.def Makefile.def && \
+RUN git -c http.sslVerify=false clone https://github.com/jf-huang/OpenSees.git && cd OpenSees && \
+git checkout uniformdamping && mv Makefile_SP.def Makefile.def && \
 sed -i 's:HOME  = /home/jfhuang:HOME  = ${mainDir}:g' Makefile.def && \
 sed -i 's:MUMPS_DIR = /home/jfhuang/Downloads/MUMPS_5.1.2:MUMPS_DIR = ${mainDir}/MUMPS_5.2.1:g' Makefile.def && \
-make wipe && make && mv $mainDir/bin/OpenSeesPARALLEL $mainDir/bin/OpenSeesSP && \
+make wipe && make && \
 cd .. && rm -r OpenSees MUMPS_5.2.1 hooks lib
 
 ENV PATH "$PATH:$mainDir/bin"
