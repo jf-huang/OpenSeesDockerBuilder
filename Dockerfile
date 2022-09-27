@@ -99,11 +99,11 @@ ARG BUILD_TIME=unknown
 # opensees, install path: $mainDir/bin
 #RUN git clone https://github.com/jf-huang/OpenSees.git
 # parallel version
-RUN git -c http.sslVerify=false clone https://github.com/jf-huang/OpenSees.git && cd OpenSees && \
+RUN git -c http.sslVerify=false clone https://github.com/jf-huang/OpenSees.git && cd OpenSees && git checkout uniformdamping && \
 cp Makefile_PARALLEL.def Makefile.def && \
 sed -i 's:HOME  = /home/jfhuang:HOME  = ${mainDir}:g' Makefile.def && \
 sed -i 's:MUMPS_DIR = /home/jfhuang/Downloads/MUMPS_5.1.2:MUMPS_DIR = ${mainDir}/MUMPS_5.2.1:g' Makefile.def && \
-make wipe && make && \
+make wipe && make && mv $mainDir/bin/OpenSeesPARALLEL $mainDir/bin/OpenSeesSP && \
 cd .. && rm -r OpenSees MUMPS_5.2.1 hooks lib
 
 ENV PATH "$PATH:$mainDir/bin"
@@ -116,4 +116,5 @@ ENV PATH "$PATH:$mainDir/bin"
 
 # Date: 10222020
 # Date: 11142020
-# Date: 02052021: enhancement for OpenSeesSP; add latest mpco; PML compilation enabled 
+# Date: 02052021: enhancement for OpenSeesSP; add latest mpco; PML compilation enabled
+# Date: 09262022: uniform damping; change executable name to SP
